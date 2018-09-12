@@ -12,4 +12,4 @@ COPY . /app
 RUN pipreqs /app
 RUN pip3 install -r /app/requirements.txt
 
-ENTRYPOINT ["python3","/app/main.py"]
+ENTRYPOINT ["python3","/app/uperation"]

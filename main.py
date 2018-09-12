@@ -3,10 +3,10 @@
 
 import argparse
 from kernel.console import LIBRARIES
+import sys
 
 def main():
     parser = argparse.ArgumentParser(description='Create and test re-usable tools')
-
     subparsers = parser.add_subparsers()
 
     for library_key, library in LIBRARIES.items():
@@ -18,8 +18,12 @@ def main():
             operation.parser(operation_subparser)
             operation_subparser.set_defaults(function=operation.execute)
 
-    results, unknown_args = parser.parse_known_args()
-    results.function(results,unknown_args)
+    try:
+        results, unknown_args = parser.parse_known_args()
+        results.function(results,unknown_args)
+    except AttributeError:
+        parser.print_help()
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

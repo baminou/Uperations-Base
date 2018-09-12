@@ -112,7 +112,7 @@ def operation_exists(operations_dir, library_name, operation_name):
 
     return os.path.isfile(os.path.join(operations_dir,library_name,operation_name,'__init__.py'))
 
-@contract(operations_dir="str",library_name="str",operation_name="str", returns="bool")
+@contract(operations_dir="str",library_name="str",operation_name="str", returns="str")
 def operation_create(operations_dir, library_name, operation_name):
     """
     Create a new operation

@@ -1,18 +1,18 @@
 
 from operation_types.operation import Operation
 
-class Test(Operation):
+class Helloworld(Operation):
 
     @staticmethod
     def name():
-        return "test"
+        return "hello_world"
 
     @staticmethod
     def description():
-        return "Test has not been documented yet."
+        return "Print Hello world!"
 
     def _parser(self, main_parser):
         return
 
     def _run(self):
-        raise NotImplementedError("Test not implemented yet.")
+        print("Hello world!")
