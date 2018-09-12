@@ -7,6 +7,9 @@ from .make_operationtype import MakeOperationType
 from .list_operation import Listoperation
 from .yaml_to_json import Yamltojson
 from .publish import Publish
+from .command import Command
+from .dockerfile import Dockerfile
+from .test import Test
 
 class Base(Library):
 
@@ -18,13 +21,15 @@ class Base(Library):
     def description():
         return "General operations"
 
-    @staticmethod
-    def operations():
+    def operations(self):
         return {
-            'make:library': Makelibrary,
-            'make:operation': MakeOperation,
-            'make:operation:type': MakeOperationType,
-            'list:operations': Listoperation,
-            'yaml_to_json': Yamltojson,
-            'publish': Publish
+            'make:library': Makelibrary(self),
+            'make:operation': MakeOperation(self),
+            'make:operation:type': MakeOperationType(self),
+            'list:operations': Listoperation(self),
+            'yaml_to_json': Yamltojson(self),
+            'publish': Publish(self),
+            'command': Command(self),
+            'dockerfile': Dockerfile(self),
+            'test': Test(self)
         }

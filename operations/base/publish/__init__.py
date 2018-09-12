@@ -4,7 +4,7 @@ import os
 import shutil
 from operations.library import Library
 from operation_types.operation import Operation
-import inspect
+import kernel.console
 
 class Publish(Operation):
 
@@ -22,21 +22,8 @@ class Publish(Operation):
         return
 
     def _run(self):
-        resource_dir = os.path.join(os.getcwd(),"resources")
-        lib_dir = os.path.join(resource_dir,self.args.library)
-        operation_dir = os.path.join(lib_dir, self.args.operation)
-
-        for library_class in Library.__subclasses__():
-            if library_class.name() == self.args.library:
-                for key in library_class.operations():
-                    if key == self.args.operation:
-                        src = os.path.join(os.path.dirname(inspect.getfile(library_class.operations()[key])),'resources')
-
-                        if not os.path.isdir(resource_dir):
-                            os.mkdir(resource_dir)
-                        if not os.path.isdir(lib_dir):
-                            os.mkdir(lib_dir)
-
-                        shutil.copytree(src,operation_dir)
-                        return True
-        return True
+        operation = kernel.console.find_operation(self.args.library, self.args.operation)
+        if operation.is_publishable():
+            operation.publish(os.path.join('resources',self.args.library,self.args.operation))
+            return
+        raise Exception("This operation is not publishable")

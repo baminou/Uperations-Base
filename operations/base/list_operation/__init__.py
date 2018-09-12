@@ -4,6 +4,7 @@ from operations.library import Library
 import inspect
 from termcolor import colored
 import tabulate
+import kernel.console
 
 
 class Listoperation(Operation):
@@ -23,17 +24,8 @@ class Listoperation(Operation):
     def _run(self):
         headers = ['Library', 'Command', 'Operation', 'Description']
         data = []
-        for library_class in Library.__subclasses__():
-            if self.args.library and not self.args.library == library_class.name():
-                continue
-            for operation_key, operation in library_class.operations().items():
-                color = "red"
-                try:
-                    inspect.getfile(operation)
-                    color = "green"
-                except TypeError:
-                    pass
-
-                data.append([colored(library_class.name(),'blue'), colored(operation_key, color), operation.name(), operation.description()[:50]])
+        for library, library_class in kernel.console.LIBRARIES.items():
+            for operation, operation_class in library_class.operations().items():
+                data.append([colored(library,'blue'), colored(operation, 'green'), operation_class.name(), operation_class.description()[:50]])
         print(tabulate.tabulate(data,headers))
         return True

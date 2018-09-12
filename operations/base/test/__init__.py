@@ -5,7 +5,7 @@ class Test(Operation):
 
     @staticmethod
     def name():
-        return "Test"
+        return "test"
 
     @staticmethod
     def description():

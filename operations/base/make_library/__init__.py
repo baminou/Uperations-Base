@@ -23,5 +23,5 @@ class Makelibrary(Operation):
         return
 
     def _run(self):
-        library_create(self.args.name,'operations',os.path.join('operations','base','make_library','template'),{'LIBRARYNAME':self.args.name.lower()})
+        library_create(self.args.name,'operations')
         return True

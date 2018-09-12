@@ -1,5 +1,5 @@
 
-from ..utils import library_exists, replace_placeholders_in_file, library_create
+from ..utils import *
 import os
 from contracts.interface import ContractNotRespected
 import shutil
@@ -99,11 +99,16 @@ def test_library_create(tmpdir):
     out_dir = p.mkdir('out_dir')
     open(os.path.join(template,'__init__.py'),'a').close()
 
-    assert library_create('new_library',str(out_dir),str(template), {}) == os.path.join(out_dir,'new_library')
+    assert library_create('new_library',str(out_dir)) == os.path.join(out_dir,'new_library')
     try:
-        library_create('new_library',str(out_dir),str(template), {}) == os.path.join(out_dir,'new_library')
+        library_create('new_library',str(out_dir)) == os.path.join(out_dir,'new_library')
         assert False
     except LibraryException:
         assert True
     shutil.rmtree(p)
+    return
+
+def test_to_camel_case():
+    snake_str = "snake_str"
+    assert to_camel_case(snake_str) == "SnakeStr"
     return
