@@ -10,6 +10,7 @@ from .publish import Publish
 from .command import Command
 from .dockerfile import Dockerfile
 from .helloworld import Helloworld
+from .hello_name import HelloName
 
 class Base(Library):
 
@@ -31,5 +32,6 @@ class Base(Library):
             'yaml_to_json': Yamltojson(self),
             'publish': Publish(self),
             'command': Command(self),
-            'dockerfile': Dockerfile(self)
+            'dockerfile': Dockerfile(self),
+            'hello': HelloName(self)
         }
