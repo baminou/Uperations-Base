@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/baminou/Uperations-Base.svg?branch=master)](https://travis-ci.org/baminou/Uperations-Base)
+
 ## Uperations
 
 This program helps you create standalone and re-usable tools that can be easily integrated in your workflows.
