@@ -1,5 +1,5 @@
 
-from vendors.uperations.operations.library import Library
+from kernel.library import Library
 
 class LIBRARYNAME(Library):
 
@@ -11,6 +11,6 @@ class LIBRARYNAME(Library):
     def description():
         return "Not description provided"
 
-    def operations():
+    def operations(self):
         return {
         }

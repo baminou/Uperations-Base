@@ -1,5 +1,5 @@
 import os
-from vendors.uperations.operation_types.operation import Operation
+from kernel.operation import Operation
 import kernel
 
 class Publish(Operation):

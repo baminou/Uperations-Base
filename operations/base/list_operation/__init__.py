@@ -1,5 +1,5 @@
 
-from vendors.uperations.operation_types.operation import Operation
+from kernel.operation import Operation
 from termcolor import colored
 import tabulate
 import kernel
