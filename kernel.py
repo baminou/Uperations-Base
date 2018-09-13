@@ -1,13 +1,8 @@
 
 from operations.base import Base
-from operations.test import Test
-from operations.base.hello_name.events.test_event import TestEvent
-from listeners.test_listener import Testlistener
-from listeners.test_listener2 import TestListener2
 
 LIBRARIES = {
-    Base.name(): Base(),
-    Test.name(): Test()
+    Base.name(): Base()
 }
 
 #EVENTS = {
