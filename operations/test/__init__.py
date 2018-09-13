@@ -1,16 +1,18 @@
 
 from operations.library import Library
+from .allo import Allo
 
-class LIBRARYNAME(Library):
+class Test(Library):
 
     @staticmethod
     def name():
-        return "LIBRARYNAME"
+        return "test"
 
     @staticmethod
     def description():
         return "Not description provided"
 
-    def operations():
+    def operations(self):
         return {
+            'allo': Allo(self)
         }

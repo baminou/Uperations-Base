@@ -277,6 +277,9 @@ class Operation(Documentable):
         """
         return os.path.join(self.operation_dir(),"resources")
 
+    def events_dir(self):
+        return os.path.join(self.operation_dir(),"events")
+
     def resource_file(self, filepath):
         """
         Retrieve a resource file
@@ -291,18 +294,18 @@ class Operation(Documentable):
             OperationException: The resource file does not exist in the operation directory
         """
         file = os.path.join(self.resource_dir(),filepath)
-        if not os.path.isfile(file):
+        if not os.path.isfile(file) and not os.path.isdir(file):
             raise OperationException("The resource file does not exist: %s" % (file))
         return os.path.join(self.resource_dir(),filepath)
 
-    def publish(self, out_dir):
+    def publish(self, out_dir, path='.'):
         """
         Copy the operation resource files to the main resource directory
 
         Params:
             out_dir: Path of the output directory
         """
-        shutil.copytree(self.resource_dir(), out_dir)
+        shutil.copytree(self.resource_file(path), out_dir)
         return
 
     def get_library(self):

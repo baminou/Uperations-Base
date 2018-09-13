@@ -7,6 +7,7 @@ import tempfile
 from contracts import contract
 from operations.library import LibraryException, LibraryNotFound
 from operation_types.operation import OperationException
+#from operations.base.make_operation import MakeOperation
 
 @contract(library_name='str', out_dir='str', returns='str')
 def library_create(library_name, out_dir):
@@ -145,6 +146,20 @@ def operation_create(operations_dir, library_name, operation_name):
 
     cprint("Operation successfully created under: %s" % operation_new_init, 'green')
     return operation_new_path
+
+def create_event(operation, event_name):
+    event_new_path = os.path.join(operation.events_dir(), event_name)
+    event_new_init = os.path.join(event_new_path, '__init__.py')
+    tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
+    tmp_init = os.path.join(tmp_dir, '__init__.py')
+
+    shutil.copytree(os.path.join('operations','base','utils','templates','make_event'), tmp_dir)
+
+    replace_placeholders_in_file(tmp_init, {'EVENTNAME':to_camel_case(event_name)})
+    shutil.copytree(tmp_dir,event_new_path)
+    shutil.rmtree(tmp_dir)
+    cprint("Event successfully created under: %s" % event_new_init, 'green')
+    return event_new_path
 
 @contract(snake_str="str", returns='str')
 def to_camel_case(snake_str):

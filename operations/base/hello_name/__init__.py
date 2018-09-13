@@ -1,5 +1,6 @@
 
 from operation_types.operation import Operation
+from .events.test_event import TestEvent
 
 class HelloName(Operation):
 
@@ -12,8 +13,8 @@ class HelloName(Operation):
         return "Print hello to any name argument"
 
     def _parser(self, main_parser):
-        main_parser.add_argument('library', help="Name to say hello to.")
+        main_parser.add_argument('name', help="Name to say hello to.")
         return
 
     def _run(self):
-        print("Hello %s" % (self.args.name))
+        TestEvent(self, "a name")
