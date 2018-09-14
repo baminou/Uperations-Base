@@ -1,5 +1,5 @@
-tabulate==0.8.2
-jsonschema==2.6.0
 termcolor==1.1.0
+jsonschema==2.6.0
+tabulate==0.8.2
 PyContracts==1.8.3
 PyYAML==3.13

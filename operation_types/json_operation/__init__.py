@@ -1,6 +1,6 @@
 import logging
 from jsonschema import Draft4Validator
-from vendors.uperations.operation_types.operation import Operation
+from kernel.operation import Operation
 from argparse import FileType
 from abc import abstractmethod
 import json
