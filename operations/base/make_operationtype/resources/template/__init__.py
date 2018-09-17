@@ -1,4 +1,4 @@
-from vendors.uperations.operation_types.operation import Operation
+from uperations.operation import Operation
 
 class OPERATIONTYPE(Operation):
 

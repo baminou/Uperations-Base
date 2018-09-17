@@ -1,5 +1,5 @@
 
-from kernel.operation import Operation
+from uperations.operation import Operation
 
 class NEWOPERATION(Operation):
 

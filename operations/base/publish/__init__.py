@@ -1,5 +1,5 @@
 import os
-from kernel.operation import Operation
+from uperations.operation import Operation
 import kernel
 
 class Publish(Operation):

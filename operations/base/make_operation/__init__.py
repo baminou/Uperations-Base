@@ -1,6 +1,6 @@
 
 
-from kernel.operation import Operation
+from uperations.operation import Operation
 from ..utils import operation_create
 
 class MakeOperation(Operation):

@@ -1,5 +1,5 @@
 
-from kernel.library import Library
+from uperations.library import Library
 
 class LIBRARYNAME(Library):
 

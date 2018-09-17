@@ -1,5 +1,5 @@
 
-from kernel.operation import Operation
+from uperations.operation import Operation
 from ..utils import library_create
 
 class Makelibrary(Operation):

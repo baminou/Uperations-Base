@@ -5,8 +5,8 @@ import shutil
 from termcolor import cprint
 import tempfile
 from contracts import contract
-from kernel.library import LibraryException, LibraryNotFound
-from kernel.operation import OperationException
+from uperations.library import LibraryException, LibraryNotFound
+from uperations.operation import OperationException
 
 @contract(library_name='str', out_dir='str', returns='str')
 def library_create(library_name, out_dir):

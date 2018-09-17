@@ -1,15 +1,8 @@
-
 from operations.base import Base
 
 LIBRARIES = {
     Base.name(): Base()
 }
-
-#EVENTS = {
-#    TestEvent: [
-#        Testlistener
-#    ]
-#}
 
 def find_operation(library, operation):
     for tmp_lib in LIBRARIES:

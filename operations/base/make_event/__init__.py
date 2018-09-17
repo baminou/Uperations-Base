@@ -1,5 +1,5 @@
 
-from vendors.uperations.operation_types.operation import Operation
+from uperations.operation import Operation
 import kernel
 from ..utils import create_event
 
