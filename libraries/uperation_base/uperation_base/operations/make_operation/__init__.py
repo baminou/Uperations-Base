@@ -1,9 +1,8 @@
 
 
 from uperations.operation import Operation
-from libraries.uperation_base.uperation_base.operations.utils import operation_create
+from ..utils import operation_create
 from uperations.kernel import Kernel
-import os
 
 class MakeOperation(Operation):
 

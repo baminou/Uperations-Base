@@ -1,5 +1,5 @@
 
-from libraries.uperation_base.uperation_base.operation_types.yml_config_operation import YmlConfigOperation
+from ...operation_types.yml_config_operation import YmlConfigOperation
 import json
 
 class Yamltojson(YmlConfigOperation):

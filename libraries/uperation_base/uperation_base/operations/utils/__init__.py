@@ -35,7 +35,7 @@ def library_create(library_name, out_dir):
     tmp_init = os.path.join(tmp_dir, '__init__.py')
     tmp_setup = os.path.join(tmp_dir, 'setup.py')
 
-    shutil.copytree(os.path.join('libraries','uperation_base','uperation_base','operations','utils','templates','make_library'), tmp_dir)
+    shutil.copytree(os.path.join(os.path.dirname(os.path.realpath(__file__)),'templates','make_library'), tmp_dir)
     replace_placeholders_in_file(tmp_init, {'LIBRARYNAME':library_name.lower()})
     replace_placeholders_in_file(tmp_setup, {'LIBRARYNAME':library_name.lower()})
     #replace_placeholders_in_file(tmp_setup, {'AUTHOR':getpass.getuser()})
@@ -146,7 +146,7 @@ def operation_create(library, library_name, operation_name):
     tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
     tmp_init = os.path.join(tmp_dir, '__init__.py')
 
-    shutil.copytree(os.path.join(os.path.dirname(os.path.relpath(__file__)),'..','utils','templates','make_operation'), tmp_dir)
+    shutil.copytree(os.path.join(os.path.dirname(os.path.relpath(__file__)),'templates','make_operation'), tmp_dir)
     replace_placeholders_in_file(tmp_init, {'NEWOPERATION':to_camel_case(operation_name)})
     shutil.copytree(tmp_dir,operation_new_path)
     shutil.rmtree(tmp_dir)
