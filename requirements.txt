@@ -1,8 +1,7 @@
-jsonschema==2.6.0
-tabulate==0.8.2
 setuptools==40.0.0
-termcolor==1.1.0
 uperations_kernel==0.0.5
+termcolor==1.1.0
+tabulate==0.8.2
+jsonschema==2.6.0
 PyContracts==1.8.3
-kernel==0.0.0
 PyYAML==3.13
