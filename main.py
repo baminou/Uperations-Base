@@ -26,7 +26,8 @@ def main():
     try:
         results, unknown_args = parser.parse_known_args()
         results.function(results,unknown_args)
-    except AttributeError:
+    except AttributeError as err:
+        print(str(err))
         parser.print_help()
         sys.exit(1)
 
