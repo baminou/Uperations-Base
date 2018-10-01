@@ -23,7 +23,7 @@ class Dockerfile(Operation):
                 print("Dockerfile already exists. Use --force to overwrite: %s" % (os.path.join(os.getcwd(),'Dockerfile')))
                 return
 
-        shutil.copy(self._resource_file('Dockerfile'),os.path.join(os.getcwd(),"Dockerfile"))
+        shutil.copy(self.resource_file('Dockerfile'),os.path.join(os.getcwd(),"Dockerfile"))
 
 
     def _id_publishable(self):

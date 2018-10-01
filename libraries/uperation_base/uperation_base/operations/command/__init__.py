@@ -18,4 +18,4 @@ class Command(Operation):
 
     def _run(self):
         command = [self.args.command]+ self.unknown_args
-        subprocess.check_output(command)
+        subprocess.check_output(command, stderr=subprocess.STDOUT)

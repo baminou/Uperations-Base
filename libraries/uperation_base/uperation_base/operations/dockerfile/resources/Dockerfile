@@ -7,9 +7,11 @@ RUN ln -s /usr/bin/python3 python
 RUN pip3 install --upgrade pip
 RUN pip3 install pipreqs
 
+VOLUME ["/app"]
 COPY . /app
+WORKDIR /app
 
-RUN pipreqs /app
-RUN pip3 install -r /app/requirements.txt
+RUN pipreqs . --force
+RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["python3","/app/uperation"]
+ENV PATH="/app:${PATH}"
