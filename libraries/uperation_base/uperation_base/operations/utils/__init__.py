@@ -7,7 +7,7 @@ import tempfile
 from contracts import contract
 from uperations.exceptions.library import LibraryException, LibraryNotFound
 from uperations.operation import OperationException
-import getpass
+import inspect
 
 @contract(library_name='str', out_dir='str', returns='str')
 def library_create(library_name, out_dir):
@@ -140,7 +140,6 @@ def operation_create(library, library_name, operation_name):
     #if operation_exists(operations_dir, library_name, operation_name):
     #    raise OperationException(os.path.join(operations_dir,library_name, operation_name)+" already exists.")
 
-
     operation_new_path = os.path.join(library.operations_dir(), operation_name)
     operation_new_init = os.path.join(operation_new_path, '__init__.py')
     tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
@@ -167,6 +166,20 @@ def create_event(operation, event_name):
     shutil.rmtree(tmp_dir)
     cprint("Event successfully created under: %s" % event_new_init, 'green')
     return event_new_path
+
+def create_observer(library, observer_name):
+    observer_new_path = os.path.join(library.observers_dir(), observer_name)
+    operation_new_init = os.path.join(observer_new_path, '__init__.py')
+    tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
+    tmp_init = os.path.join(tmp_dir, '__init__.py')
+
+    shutil.copytree(os.path.join(os.path.dirname(os.path.relpath(__file__)),'templates','make_observer'), tmp_dir)
+    replace_placeholders_in_file(tmp_init, {'OBSERVER_NAME':to_camel_case(observer_name)})
+    shutil.copytree(tmp_dir,observer_new_path)
+    shutil.rmtree(tmp_dir)
+
+    cprint("Observer successfully created under: %s" % operation_new_init, 'green')
+    return observer_new_path
 
 @contract(snake_str="str", returns='str')
 def to_camel_case(snake_str):

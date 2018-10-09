@@ -11,6 +11,7 @@ from .operations.command import Command
 from .operations.dockerfile import Dockerfile
 from .operations.helloworld import Helloworld
 from .operations.hello_name import HelloName
+from .operations.make_observer import MakeObserver
 
 class Base(Library):
 
@@ -22,12 +23,13 @@ class Base(Library):
     def description():
         return "General operations"
 
-    def operations(self):
-        return {
+    def _init_operations(self):
+        self._operations = {
             'hello:world': Helloworld(self),
             'make:library': Makelibrary(self),
             'make:operation': MakeOperation(self),
             'make:operation:type': MakeOperationType(self),
+            'make:observer': MakeObserver(self),
             'list:operations': Listoperation(self),
             'yaml_to_json': Yamltojson(self),
             'publish': Publish(self),
@@ -35,3 +37,7 @@ class Base(Library):
             'dockerfile': Dockerfile(self),
             'hello': HelloName(self)
         }
+        return
+
+    def operations(self):
+        return self._operations
