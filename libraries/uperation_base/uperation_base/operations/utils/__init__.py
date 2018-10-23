@@ -32,7 +32,7 @@ def library_create(library_name, out_dir):
     library_new_init = os.path.join(library_new_path, '__init__.py')
     tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
     tmp_lib_dir = os.path.join(tmp_dir,library_name)
-    tmp_init = os.path.join(tmp_dir, '__init__.py')
+    tmp_init = os.path.join(tmp_dir, 'make_library','__init__.py')
     tmp_setup = os.path.join(tmp_dir, 'setup.py')
 
     shutil.copytree(os.path.join(os.path.dirname(os.path.realpath(__file__)),'templates','make_library'), tmp_dir)

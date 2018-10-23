@@ -12,7 +12,10 @@ class LIBRARYNAME(Library):
         return "Not description provided"
 
     def _init_operations(self):
-        return {}
+        self._operations = {
+            # operation_command: OperationClass(self)
+        }
+        return
 
     def operations(self):
         return self._operations
