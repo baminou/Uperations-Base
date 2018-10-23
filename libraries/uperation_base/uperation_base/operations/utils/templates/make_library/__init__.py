@@ -11,6 +11,8 @@ class LIBRARYNAME(Library):
     def description():
         return "Not description provided"
 
+    def _init_operations(self):
+        return {}
+
     def operations(self):
-        return {
-        }
+        return self._operations

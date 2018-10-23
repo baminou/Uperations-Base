@@ -1,8 +1,8 @@
 
-from uperations.operation import Operation
+from uperation_base.operation_types.command_operation import CommandOperation
 import subprocess
 
-class Command(Operation):
+class Command(CommandOperation):
 
     @staticmethod
     def name():
@@ -18,4 +18,7 @@ class Command(Operation):
 
     def _run(self):
         command = [self.args.command]+ self.unknown_args
-        subprocess.check_output(command, stderr=subprocess.STDOUT)
+        proc = subprocess.Popen([self.args.command]+ self.unknown_args,shell=False)
+        proc.communicate()
+        proc.kill()
+        #subprocess.check_output(command, stderr=subprocess.STDOUT)
