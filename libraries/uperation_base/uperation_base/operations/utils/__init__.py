@@ -153,19 +153,19 @@ def operation_create(library, library_name, operation_name):
     cprint("Operation successfully created under: %s" % operation_new_init, 'green')
     return operation_new_path
 
-def create_event(operation, event_name):
-    event_new_path = os.path.join(operation.events_dir(), event_name)
-    event_new_init = os.path.join(event_new_path, '__init__.py')
+def create_operation_type(library, operation_type):
+    operation_type_new_path = os.path.join(library.operation_types_dir(), operation_type)
+    operation_type_new_init = os.path.join(operation_type_new_path, '__init__.py')
     tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
     tmp_init = os.path.join(tmp_dir, '__init__.py')
 
-    shutil.copytree(os.path.join('operations','base','utils','templates','make_event'), tmp_dir)
-
-    replace_placeholders_in_file(tmp_init, {'EVENTNAME':to_camel_case(event_name)})
-    shutil.copytree(tmp_dir,event_new_path)
+    shutil.copytree(os.path.join(os.path.dirname(os.path.relpath(__file__)),'templates','make_operation_type'), tmp_dir)
+    replace_placeholders_in_file(tmp_init, {'OPERATIONTYPE':to_camel_case(operation_type)})
+    shutil.copytree(tmp_dir,operation_type_new_path)
     shutil.rmtree(tmp_dir)
-    cprint("Event successfully created under: %s" % event_new_init, 'green')
-    return event_new_path
+
+    cprint("Operation type successfully created under: %s" % operation_type_new_init, 'green')
+    return operation_type_new_path
 
 def create_observer(library, observer_name):
     observer_new_path = os.path.join(library.observers_dir(), observer_name)
