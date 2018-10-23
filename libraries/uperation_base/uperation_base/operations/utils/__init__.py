@@ -167,8 +167,8 @@ def create_operation_type(library, operation_type):
     cprint("Operation type successfully created under: %s" % operation_type_new_init, 'green')
     return operation_type_new_path
 
-def create_observer(library, observer_name):
-    observer_new_path = os.path.join(library.observers_dir(), observer_name)
+def create_observer(observer_name):
+    observer_new_path = os.path.join('observers', observer_name)
     operation_new_init = os.path.join(observer_new_path, '__init__.py')
     tmp_dir = os.path.join(tempfile.mkdtemp(),'tmp')
     tmp_init = os.path.join(tmp_dir, '__init__.py')
