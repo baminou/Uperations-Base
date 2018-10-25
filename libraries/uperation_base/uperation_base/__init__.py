@@ -9,8 +9,6 @@ from .operations.yaml_to_json import Yamltojson
 from .operations.publish import Publish
 from .operations.command import Command
 from .operations.dockerfile import Dockerfile
-from .operations.helloworld import Helloworld
-from .operations.hello_name import HelloName
 from .operations.make_observer import MakeObserver
 
 class Base(Library):
@@ -25,7 +23,6 @@ class Base(Library):
 
     def _init_operations(self):
         self._operations = {
-            'hello:world': Helloworld(self),
             'make:library': Makelibrary(self),
             'make:operation': MakeOperation(self),
             'make:operation:type': MakeOperationType(self),
@@ -34,8 +31,7 @@ class Base(Library):
             'yaml_to_json': Yamltojson(self),
             'publish': Publish(self),
             'command': Command(self),
-            'dockerfile': Dockerfile(self),
-            'hello': HelloName(self)
+            'dockerfile': Dockerfile(self)
         }
         return
 

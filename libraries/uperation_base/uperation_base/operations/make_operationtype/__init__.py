@@ -1,9 +1,9 @@
 
 
 from uperations.operation import Operation
-import shutil
-import os
-from termcolor import cprint
+from ..utils import create_operation_type
+from uperations.kernel import Kernel
+
 
 class MakeOperationType(Operation):
 
@@ -16,25 +16,12 @@ class MakeOperationType(Operation):
         return "Create a new operation type"
 
     def _parser(self, main_parser):
+        main_parser.add_argument('library', help="Name of the library to add the operation type")
         main_parser.add_argument('type', help="Name of the operation type")
         return
 
     def _run(self):
-
-        #Retrieve the library name and path
-        operation_type = self.args.type
-
-        template_path = os.path.join(os.path.dirname(os.path.relpath(__file__)),'resources','template')
-        new_init_path = os.path.join('operation_types',operation_type,'__init__.py')
-
-        shutil.copytree(template_path, os.path.join('operation_types', operation_type))
-        with open(new_init_path,'r') as f:
-            new_text = f.read().replace('OPERATIONTYPE', MakeOperationType.to_camel_case(operation_type).capitalize())
-
-        with open(new_init_path,'w') as f:
-            f.write(new_text)
-
-        cprint("Operation type successfully created under: %s" % new_init_path,'green')
+        create_operation_type(Kernel.get_instance().find_library(self.args.library),self.args.type)
         return True
 
 

@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 class DotEnvOperation(Operation):
 
     def _parser(self, main_parser):
-        main_parser.add_argument('env_file', help=".env file path", type=str)
+        main_parser.add_argument('--env', help=".env file path", type=str, default='.env')
         return main_parser
 
     def _before_start(self):
         super(DotEnvOperation, self)._before_start()
-        load_dotenv(self.args.env_file)
+        load_dotenv(self.args.env, verbose=True)
         return True
 
     def _on_running(self):
