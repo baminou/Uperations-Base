@@ -2,7 +2,7 @@ setuptools==40.0.0
 termcolor==1.1.0
 tabulate==0.8.2
 jsonschema==2.6.0
-uperations_kernel==0.0.8
+uperations_kernel==0.0.10
 PyContracts==1.8.5
 python-dotenv==0.9.1
 PyYAML==3.13
