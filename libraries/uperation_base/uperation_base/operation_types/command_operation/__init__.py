@@ -31,4 +31,5 @@ class CommandOperation(Operation):
     def _run(self):
         base_command = self.args.command if not self.args.command == None else self._command()
         command = [base_command]+ self.unknown_args
-        subprocess.check_output(command)
+        proc = subprocess.Popen(command, shell=False)
+        proc.communicate()
