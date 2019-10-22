@@ -13,6 +13,6 @@ setup(
     url='https://github.com/baminou/Uperations-Base',
     package_data={'': ['operations/dockerfile/resources/Dockerfile']},
     install_requires=['jsonschema==2.6.0','uperations_kernel==0.0.11','tabulate==0.8.2','termcolor==1.1.0',
-                      'setuptools==40.0.0','PyContracts==1.8.3','python-dotenv==0.9.1','PyYAML==3.13',
+                      'setuptools==40.0.0','PyContracts==1.8.3','python-dotenv==0.9.1','PyYAML==5.1',
                       'python-dotenv==0.9.1']
 )
