@@ -10,7 +10,7 @@ class DotEnvOperation(Operation):
 
     def _before_start(self):
         super(DotEnvOperation, self)._before_start()
-        load_dotenv(self.args.env, verbose=True)
+        load_dotenv(self.args.env, verbose=True,override=True)
         return True
 
     def _on_running(self):
