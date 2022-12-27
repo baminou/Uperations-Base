@@ -1,4 +1,4 @@
-setuptools==40.0.0
+setuptools==65.5.1
 termcolor==1.1.0
 tabulate==0.8.2
 jsonschema==2.6.0
